@@ -11,12 +11,19 @@
     <hr>
     <div align="center">
         ต้องการดูกระทู้หมายเลข <?php echo $_GET["id"];?><br>
+        <?php
+            $id=$_GET["id"];
+            if(($id%2)==0)
+                echo "เป็นกระทู้จำนวนคู่";
+            else
+                echo "เป็นกระทู้จำนวนคี่";
+        ?>
         <table style="border:2px solid black; width:40%;" align="center">
         <tr><td style="background-color: #6CD2FE;" colspan="2";>แสดงความคิดเห็น</td></tr>
         <tr><td colspan="2" align="center"><textarea id="comment" name="comment" rows="5" cols="40"></textarea></td></tr>
         <tr><td colspan="2" align="center"><input type="submit" value="ส่งข้อความ"></td></tr>
     </table>
     </div>
-    <p align= "center"><a href="index.html">กลับสู่หน้าหลัก</a></p>
+    <p align= "center"><a href="index.php">กลับสู่หน้าหลัก</a></p>
 </body>
 </html>

@@ -9,10 +9,18 @@
 <body>
     <h1 align="center">Woardbeb Webboard</h1>
     <hr>
-    <div align="center">
-        เข้าสู่ระบบด้วย<br>
-        Login = <?php echo $_POST["login"];?><br>
-        Password = <?php echo $_POST["pwd"];?>
-    </div>
+    <p align= "center">
+    <?php
+        $login=$_POST["login"];
+        $pwd=$_POST["pwd"];
+        if ($login=="admin" && $pwd=="ad1234")
+            echo "ยินดีต้อนรับท่าน แอดมิน";
+        elseif ($login=="member" && $pwd=="mem1234")
+            echo "ยินดีต้อนรับท่าน สมาชิก";
+        else
+            echo "ชื่อบัญชีหรือรหัสผ่านไม่ถูกต้อง";
+    ?>
+    </p>
+    <p align= "center"><a href="index.php">กลับสู่หน้าหลัก</a></p>
 </body>
 </html>
