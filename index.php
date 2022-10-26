@@ -45,6 +45,8 @@
         ?>
     
     </table>
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     </div>
 </body>
 <?php
@@ -54,32 +56,40 @@
     <div class="container">
     <h1 style="text-align: center;">Woardbeb Webboard</h1>
     <?php include "nav.php"; ?>
-    <hr>
-    หมวดหมู่:
-    <select name="category">
-        <option value="all">--ทั้งหมด--</option>
-        <option value="general">เรื่องทั่วไป</option>
-        <option value="study">เรื่องเรียน</option>
-    </select>
-    <div style="float: right;">
-    <?php
-    echo 'ผู้ใข้งานในระบบ : ',$_SESSION['username'];
-    ?>
-    <a href="logout.php">ออกจากระบบ</a> 
+    <br>
+    <div class="d-flex justify-content-between">
+        <div>
+            <label>หมวดหมู่</label>
+            <span class="dropdown">
+                <button class="btn btn-light dropdown-toggle btn-sm"
+                type="button" id="button2" data-bs-toggle="dropdown"
+                aria-expanded="false">--ทั้งหมด--</button>
+                <ul class="dropdown-menu" aria-labelledby="button2">
+                    <li><a href="#" class="dropdown-item">ทั้งหมด</a></li>
+                    <li><a href="#" class="dropdown-item">เรื่องเรียน</a></li>
+                    <li><a href="#" class="dropdown-item">เรื่องทั่วไป</a></li>
+                </ul>
+            </span>
+        </div>
+        <div>
+            <a href="newpost.php" class="btn btn-success btn-sm">
+            <i class="bi bi-plus-square-fill"></i> สร้างกระทู้ใหม่</a>
+        </div>
     </div>
     <br>
-    <a href="newpost.php">สร้างกระทู้ใหม่</a>
-    <br>
-    <ul>
+    <table class="table table-striped">
+    
         <?php
             for($i=1;$i<=10;$i++){
-                echo "<li><a href =post.php?id="."$i".">กระทู้ที่ ".$i."</a>";
-                $r = $_SESSION['role'];
-                if ($r=="a")
-                echo "&nbsp;&nbsp;&nbsp;<a href =delete.php?id="."$i".">ลบ</a></li>";
+                echo "<tr><td><a href =post.php?id="."$i"." style=text-decoration:none>กระทู้ที่ ".$i."</a></td>";
+                if($_SESSION['role']=='a'){
+                    echo"<td><a href=delete.php?id=$i class='btn btn-danger btn-sm'><i class='bi bi-trash3-fill'></i></a></td>";
+                }
+                echo"</tr>";
             }
         ?>
-    </ul>
+    
+    </table>
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </div>
